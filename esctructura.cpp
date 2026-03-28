@@ -9,7 +9,7 @@ class BinomialHeap{
             Node* sibling; //Nodo hermano derecho
             Node(int k){
                 key=k;
-                cantidadH = 0;
+                degree = 0;
                 parent = child = sibling = nullptr;
             }
         };
