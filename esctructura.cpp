@@ -19,7 +19,18 @@ class BinomialHeap{
         BinomialHeap(){
             head=nullptr;
         }
-        //Función de union
+        //Función de merge
+        Node* merge(Node* b1,Node* b2){
+            if(!b1){
+                return b2;
+            }
+            else if(!b2){
+                return b1;
+            }
+            Node* head = nullptr;
+            Node* tail = nullptr;
+            // inicializando head
+        }
 }
 int main() {
 }
