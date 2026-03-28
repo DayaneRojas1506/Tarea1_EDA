@@ -108,15 +108,30 @@ private:
         return prev;
     }
 
+    void destructor_aux(Node* node){
+        if(!node){
+            return; 
+        }
+        destructor_aux(node->child);
+        destructor_aux(node->sibling);
+
+        delete  node;
+    }
+
 public:
     BinomialHeap() {
         head = nullptr;
     }
 
+    ~BinomialHeap(){
+        destructor_aux(head);
+        head = nullptr;
+    }
+
     void insert(int key) {
-        BinomialHeap temp;
-        temp.head = new Node(key);
-        head = unionHeap(head, temp.head);
+        Node* temp = new Node(key);
+        
+        head = unionHeap(head, temp);
     }
 
     int getMin() {
@@ -162,6 +177,8 @@ public:
 
         // unir con heap restante
         head = unionHeap(head, child);
+
+        delete minNode;
 
         return minVal;
     }
